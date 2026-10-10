@@ -118,3 +118,9 @@ The FFmpeg build has no encoders, decoders or external libraries. It contains on
   - Running `/usr/bin/perl` from a sandboxed app is allowed today, but Apple has signalled that scripting runtimes may be removed from macOS. If that happens, ExifTool needs a bundled relocatable Perl. Until then the native JPEG/PNG/WebP and FFmpeg paths keep working.
   - Reviewers may ask about the bundled interpreter-run code.
   - LGPL helpers are generally accepted on the App Store if relinking or replacement is possible. Get legal advice for your situation.
+
+## License
+
+Metadata Wash is released under the [MIT License](LICENSE). Bundled third-party components keep their own licenses; see [Dependencies](#dependencies) and `Config/Licenses/`.
+
+The test fixture key `Metadata WashTests/Fixtures/es256_private.key` is the public C2PA test signing key (certificate marked `FOR TESTING_ONLY`). It is not a secret.
