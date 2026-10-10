@@ -73,7 +73,15 @@ Scripts/fetch-exiftool.sh
 Scripts/build-ffmpeg.sh
 ```
 
-Then open `Metadata Wash.xcodeproj` and run. Both scripts are pinned and checksum-verified. Their output goes to `Vendor/`, which is not committed. The **Embed Metadata Engines** build phase (`Scripts/embed-engines.sh`) does three things:
+Then open `Metadata Wash.xcodeproj` and run.
+
+To build under your own bundle identifier, set `METADATA_WASH_BUNDLE_ID` (the default is `com.gbroman.Metadata-Wash`; the test target appends `Tests`). `xcodebuild` and `Scripts/make-dmg.sh` read it from the environment:
+
+```bash
+METADATA_WASH_BUNDLE_ID=com.example.MetadataWash Scripts/make-dmg.sh
+```
+
+The Xcode app only sees it if Xcode is launched from a shell with the variable set (for example `METADATA_WASH_BUNDLE_ID=com.example.MetadataWash open -a Xcode "Metadata Wash.xcodeproj"`). You also need to pick your own team under *Signing & Capabilities*. Both scripts are pinned and checksum-verified. Their output goes to `Vendor/`, which is not committed. The **Embed Metadata Engines** build phase (`Scripts/embed-engines.sh`) does three things:
 
 - copies ExifTool to `Contents/Resources/exiftool`;
 - copies `ffmpeg`/`ffprobe` to `Contents/Helpers` and signs them with the hardened runtime and the sandbox `inherit` entitlement (`Config/Helper.entitlements`);
