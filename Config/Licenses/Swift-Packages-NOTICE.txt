@@ -1,0 +1,10 @@
+Swift packages linked through the C2PA Swift SDK
+
+- swift-crypto (https://github.com/apple/swift-crypto) — Apache License 2.0
+- swift-certificates (https://github.com/apple/swift-certificates) — Apache License 2.0
+- swift-asn1 (https://github.com/apple/swift-asn1) — Apache License 2.0
+- c2pa-rs (bundled in C2PAC.xcframework, https://github.com/contentauth/c2pa-rs) — MIT or Apache License 2.0
+
+Copyright (c) Apple Inc. and the Swift project authors; Copyright (c) Adobe and
+the Content Authenticity Initiative contributors. See Apache-2.0.txt for the
+full Apache License 2.0 text.

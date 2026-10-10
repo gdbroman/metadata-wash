@@ -1,0 +1,14 @@
+# Xcode
+xcuserdata/
+DerivedData/
+build/
+*.xcresult
+
+# Vendored engines are fetched/built by Scripts/fetch-exiftool.sh and Scripts/build-ffmpeg.sh
+/Vendor/
+
+.DS_Store
+
+# SwiftPM build output for the fixture signer
+.build/
+.swiftpm/

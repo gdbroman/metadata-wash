@@ -1,0 +1,11 @@
+remove-ai-watermarks
+https://github.com/wiltodelta/remove-ai-watermarks
+
+Licensed under the Apache License, Version 2.0 (see Apache-2.0.txt).
+
+Metadata Wash adapts lists of AI-generation metadata keys, AI generator tokens,
+IPTC 2025.1 AI-disclosure fields, China TC260 AIGC markers, vendor trailer
+markers and C2PA cloud-manifest repositories from this project
+(src/remove_ai_watermarks/metadata.py and _internal/constants.py), translated
+to Swift in AISignatures.swift and JPEGContainer.swift. No code from its
+pixel-level or machine-learning watermark processing is included.
