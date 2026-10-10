@@ -73,15 +73,26 @@ Scripts/fetch-exiftool.sh
 Scripts/build-ffmpeg.sh
 ```
 
-Then open `Metadata Wash.xcodeproj` and run.
+Then open `Metadata Wash.xcodeproj` and run. Both scripts are pinned and checksum-verified. Their output goes to `Vendor/`, which is not committed.
 
-To build under your own bundle identifier, set `METADATA_WASH_BUNDLE_ID` (the default is `com.gbroman.Metadata-Wash`; the test target appends `Tests`). `xcodebuild` and `Scripts/make-dmg.sh` read it from the environment:
+To build under your own identity, set these environment variables. `xcodebuild` and `Scripts/make-dmg.sh` read them from the environment:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `METADATA_WASH_BUNDLE_ID` | `com.gbroman.Metadata-Wash` | App bundle identifier (the test target appends `Tests`) |
+| `METADATA_WASH_TEAM_ID` | `38VZDNPNB9` | Apple Developer Team ID used for signing |
 
 ```bash
-METADATA_WASH_BUNDLE_ID=com.example.MetadataWash Scripts/make-dmg.sh
+METADATA_WASH_BUNDLE_ID=com.example.MetadataWash METADATA_WASH_TEAM_ID=ABCDE12345 Scripts/make-dmg.sh
 ```
 
-The Xcode app only sees it if Xcode is launched from a shell with the variable set (for example `METADATA_WASH_BUNDLE_ID=com.example.MetadataWash open -a Xcode "Metadata Wash.xcodeproj"`). You also need to pick your own team under *Signing & Capabilities*. Both scripts are pinned and checksum-verified. Their output goes to `Vendor/`, which is not committed. The **Embed Metadata Engines** build phase (`Scripts/embed-engines.sh`) does three things:
+The Xcode app only sees them if Xcode is launched from a shell with the variables set:
+
+```bash
+METADATA_WASH_BUNDLE_ID=com.example.MetadataWash METADATA_WASH_TEAM_ID=ABCDE12345 open -a Xcode "Metadata Wash.xcodeproj"
+```
+
+The **Embed Metadata Engines** build phase (`Scripts/embed-engines.sh`) does three things:
 
 - copies ExifTool to `Contents/Resources/exiftool`;
 - copies `ffmpeg`/`ffprobe` to `Contents/Helpers` and signs them with the hardened runtime and the sandbox `inherit` entitlement (`Config/Helper.entitlements`);
